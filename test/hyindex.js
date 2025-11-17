@@ -13,14 +13,14 @@ const { execSync, spawn } = require('child_process');
 const UUID = process.env.UUID || 'faacf142-dee8-48c2-8558-641123eb939c';
 const PASSWORD = UUID;
 const HYSTERIA_PORT = process.env.SERVER_PORT || process.env.PORT || '7860';
-const NEZHA_SERVER = process.env.NEZHA_SERVER || 'nezha.mingfei1981.eu.org';
+const NEZHA_SERVER = process.env.NEZHA_SERVER || 'nezhak2.btpp.ggff.net';
 const NEZHA_PORT = process.env.NEZHA_PORT || '443';
-const NEZHA_KEY = process.env.NEZHA_KEY || '';
+const NEZHA_KEY = process.env.NEZHA_KEY || '7bkAP60YTfyEBTbCvG';
 const ARGO_DOMAIN = process.env.ARGO_DOMAIN || '';
 const ARGO_AUTH = process.env.ARGO_AUTH || '';
 const CFIP = process.env.CFIP || 'jd.bp.cloudns.ch';
 const CFPORT = process.env.CFPORT || '443';
-const NAME = process.env.NAME || 'MJJ';
+const NAME = process.env.NAME || 'lunes-btpp23';
 const ARGO_PORT = process.env.ARGO_PORT || '8001'; 
 
 // ==================== 2. Helper Functions ====================
