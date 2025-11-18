@@ -14,7 +14,7 @@ export NAME=${NAME:-'MJJ'}
 export ARGO_PORT=${ARGO_PORT:-'8001'}
 
 # Custom TUIC port (user-defined, not random)
-export HY_PORT=${HY_PORT:-'25281'}
+export HY_PORT=${HY_PORT:-'25155'}
 
 # ==================== DOWNLOAD FUNCTION (silent) ====================
 download_file() {
