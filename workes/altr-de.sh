@@ -1,8 +1,9 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # ==================== VARIABLES ====================
 export UUID=${UUID:-'faacf142-dee8-48c2-8558-641123eb939c'}
 export PASSWORD="$UUID"
+export HYSTERIA_PORT=${SERVER_PORT:-${PORT:-7860}}
 export NEZHA_SERVER=${NEZHA_SERVER:-'nezha.mingfei1981.eu.org'}
 export NEZHA_PORT=${NEZHA_PORT:-'443'}
 export NEZHA_KEY=${NEZHA_KEY:-'lsqrMXhN7dhZ0hfuTs'}
@@ -12,9 +13,6 @@ export CFIP=${CFIP:-'time.is'}
 export CFPORT=${CFPORT:-'443'}
 export NAME=${NAME:-'MJJ'}
 export ARGO_PORT=${ARGO_PORT:-'8001'}
-
-# Custom TUIC port (user-defined, not random)
-export HY_PORT=${HY_PORT:-'25155'}
 
 # ==================== DOWNLOAD FUNCTION (silent) ====================
 download_file() {
@@ -29,7 +27,7 @@ fi
 
 # ==================== ARCH DETECTION & DOWNLOAD ====================
 ARCH=$(uname -m)
-if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
 download_file "https://github.com/apernet/hysteria/releases/download/app%2Fv2.6.5/hysteria-linux-arm64" "icchy"
 sleep 5
 download_file "https://github.com/babama1001980/good/releases/download/npc/armv2" "iccv2"
@@ -37,7 +35,7 @@ sleep 5
 download_file "https://github.com/babama1001980/good/releases/download/npc/arm64agent" "iccagent"
 sleep 5
 download_file "https://github.com/babama1001980/good/releases/download/npc/arm642go" "icc2go"
-elif [[ "$ARCH" == "x86_64" || "$ARCH" == "amd64" ]]; then
+elif [ "$ARCH" = "x86_64" ] || [ "$ARCH" = "amd64" ]; then
 download_file "https://github.com/apernet/hysteria/releases/download/app%2Fv2.6.5/hysteria-linux-amd64" "icchy"
 sleep 5
 download_file "https://github.com/babama1001980/good/releases/download/npc/amdv2" "iccv2"
@@ -58,7 +56,7 @@ openssl req -new -x509 -key server.key -out server.crt -subj "/CN=www.bing.com" 
 # ==================== HYSTERIA2 CONFIG ====================
 cat > hy_config.json << EOF
 {
-  "listen": ":$HY_PORT",
+  "listen": ":$HYSTERIA_PORT",
   "tls": {
     "cert": "server.crt",
     "key": "server.key"
@@ -106,11 +104,11 @@ cat > v2_config.json << EOF
 EOF
 
 # ==================== ARGO CONFIG ====================
-if [[ -n "$ARGO_AUTH" && -n "$ARGO_DOMAIN" ]]; then
-if [[ $ARGO_AUTH =~ TunnelSecret ]]; then
+if [ -n "$ARGO_AUTH" ] && [ -n "$ARGO_DOMAIN" ]; then
+if echo "$ARGO_AUTH" | grep -q "TunnelSecret"; then
 echo "$ARGO_AUTH" > tunnel.json
 cat > tunnel.yml << EOF
-tunnel: $(cut -d\" -f12 <<< "$ARGO_AUTH")
+tunnel: $(echo "$ARGO_AUTH" | cut -d\" -f12)
 credentials-file: tunnel.json
 protocol: http2
 ingress:
@@ -127,10 +125,10 @@ fi
 nohup ./"icchy" server -c hy_config.json > /dev/null 2>&1 &
 nohup ./"iccv2" -c v2_config.json > /dev/null 2>&1 &
 
-if [[ -n "$ARGO_AUTH" ]]; then
-if [[ $ARGO_AUTH =~ ^[A-Z0-9a-z=]{120,250}$ ]]; then
-nohup ./"icc2go" tunnel --edge-ip-version auto --no-autoupdate --protocol http2 run --token ${ARGO_AUTH} > argo.log 2>&1 &
-elif [[ $ARGO_AUTH =~ TunnelSecret ]]; then
+if [ -n "$ARGO_AUTH" ]; then
+if echo "$ARGO_AUTH" | grep -q "^[A-Z0-9a-z=]\{120,250\}$"; then
+nohup ./"icc2go" tunnel --edge-ip-version auto --no-autoupdate --protocol http2 run --token "${ARGO_AUTH}" > argo.log 2>&1 &
+elif echo "$ARGO_AUTH" | grep -q "TunnelSecret"; then
 nohup ./"icc2go" tunnel --edge-ip-version auto --config tunnel.yml run > argo.log 2>&1 &
 else
 nohup ./"icc2go" tunnel --edge-ip-version auto --no-autoupdate --protocol http2 --logfile argo.log --loglevel info --url http://localhost:$ARGO_PORT > /dev/null 2>&1 &
@@ -140,14 +138,26 @@ nohup ./"icc2go" tunnel --edge-ip-version auto --no-autoupdate --protocol http2 
 fi
 
 tlsPorts=("443" "8443" "2096" "2087" "2083" "2053")
-if [[ " ${tlsPorts[*]} " =~ " ${NEZHA_PORT} " ]]; then
+# Use POSIX shell compatible way for checking array membership
+check_port() {
+  local search="$1"
+  shift
+  for element in "$@"; do
+    if [ "$element" = "$search" ]; then
+      return 0 # Found
+    fi
+  done
+  return 1 # Not found
+}
+
+if check_port "$NEZHA_PORT" "${tlsPorts[@]}"; then
 NEZHA_TLS="--tls"
 else
 NEZHA_TLS=""
 fi
 
-if [[ -n "$NEZHA_SERVER" && -n "$NEZHA_KEY" ]]; then
-if [[ -n "$NEZHA_PORT" ]]; then
+if [ -n "$NEZHA_SERVER" ] && [ -n "$NEZHA_KEY" ]; then
+if [ -n "$NEZHA_PORT" ]; then
 nohup ./"iccagent" -s "${NEZHA_SERVER}:${NEZHA_PORT}" -p "${NEZHA_KEY}" ${NEZHA_TLS} > /dev/null 2>&1 &
 else
 cat > nezha.yaml << EOF
@@ -166,7 +176,7 @@ server: ${NEZHA_SERVER}
 skip_connection_count: false
 skip_procs_count: false
 temperature: false
-tls: $( [[ " ${tlsPorts[*]} " =~ " ${NEZHA_SERVER##*:} " ]] && echo true || echo false )
+tls: $( echo "$NEZHA_SERVER" | grep -q ':[48]\{1\}43$' || echo "$NEZHA_SERVER" | grep -q ':20[589][367]$' || echo "$NEZHA_SERVER" | grep -q ':8443$' ; [ $? -eq 0 ] && echo true || echo false )
 use_gitee_to_upgrade: false
 use_ipv6_country_code: false
 uuid: ${UUID}
@@ -180,11 +190,11 @@ sleep 15
 HOST_IP=$(curl -s ipv4.ip.sb || curl -s ipv6.ip.sb)
 ISP=$(curl -s https://speed.cloudflare.com/meta | awk -F\" '{print $26"-"$18}' | sed 's/ /_/g')
 
-if [[ -n "$ARGO_DOMAIN" ]]; then
+if [ -n "$ARGO_DOMAIN" ]; then
 ARGO_DOMAIN_FINAL="$ARGO_DOMAIN"
 else
 ARGO_DOMAIN_FINAL=$(grep -oE "https://[a-z0-9.-]*\.trycloudflare\.com" argo.log | head -1 | cut -d/ -f3)
-[[ -z "$ARGO_DOMAIN_FINAL" ]] && ARGO_DOMAIN_FINAL="temporary-tunnel-not-ready.trycloudflare.com"
+[ -z "$ARGO_DOMAIN_FINAL" ] && ARGO_DOMAIN_FINAL="temporary-tunnel-not-ready.trycloudflare.com"
 fi
 
 # ==================== GENERATE SUBSCRIPTION (silent) ====================
@@ -192,7 +202,7 @@ cat > sub.txt << EOF
 start install success
 
 === HY2 ===
-hysteria2://$PASSWORD@$HOST_IP:$HY_PORT/?insecure=1&sni=www.bing.com#$NAME-HY-$ISP
+hysteria2://$PASSWORD@$HOST_IP:$HYSTERIA_PORT/?insecure=1&sni=www.bing.com#$NAME-HY-$ISP
 
 === VLESS-WS-ARGO ===
 vless://$UUID@$CFIP:443?encryption=none&security=tls&sni=$ARGO_DOMAIN_FINAL&type=ws&host=$ARGO_DOMAIN_FINAL&path=%2Fvless-argo%3Fed%3D2560#$NAME-VLESS-$ISP
