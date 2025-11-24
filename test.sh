@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # ==================== VARIABLES ====================
 export UUID=${UUID:-'faacf142-dee8-48c2-8558-641123eb939c'}
