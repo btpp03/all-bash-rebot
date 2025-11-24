@@ -4,9 +4,9 @@
 export UUID=${UUID:-'faacf142-dee8-48c2-8558-641123eb939c'}
 export PASSWORD="$UUID"
 export HYSTERIA_PORT=${SERVER_PORT:-${PORT:-7860}}
-export NEZHA_SERVER=${NEZHA_SERVER:-'nezha.mingfei1981.eu.org'}
-export NEZHA_PORT=${NEZHA_PORT:-'443'}
-export NEZHA_KEY=${NEZHA_KEY:-'BPE30BICd8kvO84006'}
+export NEZHA_SERVER=${NEZHA_SERVER:-''}
+export NEZHA_PORT=${NEZHA_PORT:-''}
+export NEZHA_KEY=${NEZHA_KEY:-''}
 export ARGO_DOMAIN=${ARGO_DOMAIN:-'test.5.d.0.0.9.2.f.1.0.7.4.0.1.0.0.2.ip6.arpa'}
 export ARGO_AUTH=${ARGO_AUTH:-'eyJhIjoiNjgyNWI4YTZjODBhYWQxODlmYWI5ZWEwMDI5YzY2NjgiLCJ0IjoiMThiZjhkYjMtYmIzYi00NzIzLTkxYjMtYjEzNjMyYzNkMTgxIiwicyI6IllqRTVNalV4TXpjdE9UYzNOQzAwTkRBekxXSmpNRFF0WWpZME16TmtNakJqTW1OaSJ9'}
 export CFIP=${CFIP:-'time.is'}
