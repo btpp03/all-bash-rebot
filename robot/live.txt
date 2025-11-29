@@ -13,3 +13,9 @@ vibegames001
 191.96.231.5
 30066
 mcserverhost001
+
+
+
+135.125.9.13
+2838
+elementiamc001
