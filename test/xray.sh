@@ -4,7 +4,7 @@
 export UUID=${UUID:-'faacf142-dee8-48c2-8558-641123eb939c'}
 export NEZHA_SERVER=${NEZHA_SERVER:-'nezha.mingfei1981.eu.org'}
 export NEZHA_PORT=${NEZHA_PORT:-'443'}
-export NEZHA_KEY=${NEZHA_KEY:-'VcNmAA8ErRWXY9l13e'}
+export NEZHA_KEY=${NEZHA_KEY:-'ZYzXjqhuJBvMi63xVA'}
 export ARGO_DOMAIN=${ARGO_DOMAIN:-''}
 export ARGO_AUTH=${ARGO_AUTH:-''}
 export CFIP=${CFIP:-'jd.bp.cloudns.ch'}
