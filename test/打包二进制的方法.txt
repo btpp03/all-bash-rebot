@@ -1,0 +1,11 @@
+打包二进制的方法
+
+找个又pkg的VPS环境, 先npm staill 再打包上传, 给权限, 运行即可
+
+
+打包方式（打包时要把node版本号改成当前vps的） 
+sudo pkg ./index.js -t node18-linux-x64
+
+
+
+

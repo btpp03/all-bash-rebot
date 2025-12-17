@@ -1,0 +1,21 @@
+{
+  "name": "node-ws",
+  "version": "1.0.0",
+  "description": "Node.js Server",
+  "main": "index.js",
+  "author": "",
+  "repository": "",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2",
+    "axios": "^1.6.2",
+    "@baipiaodajun/mcbot": "^1.0.4"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

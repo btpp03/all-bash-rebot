@@ -1,0 +1,22 @@
+FROM node:20-alpine3.20
+
+# huggingface使用
+
+# 更改工作目录为 /app，这是标准的 Node.js 容器实践
+WORKDIR /app
+
+# 复制必要文件
+COPY index.js index.html package.json ./
+
+# 暴露端口 (Hugging Face Spaces通常映射到 7860/8080)
+EXPOSE 7860
+
+# 1. 安装 PM2
+# 2. 运行 npm install
+RUN apk update && apk add --no-cache bash openssl curl && \
+    npm install && \
+    npm install -g pm2
+
+# 3. 更改启动命令：使用 pm2-runtime 启动应用
+# pm2-runtime 确保 PM2 在崩溃时自动重启应用，从而解决长时间运行的稳定性问题。
+CMD ["pm2-runtime", "start", "index.js", "--name", "mcplayer"]
