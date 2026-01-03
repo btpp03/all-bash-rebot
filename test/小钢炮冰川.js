@@ -2,14 +2,14 @@ const { execSync, spawn } = require('child_process');
 const fs = require('fs');
 const http = require('http');
 
-// ½« HTML ÄÚÈÝÖ±½ÓÇ¶Èëµ½ JS ±äÁ¿ÖÐ
+// å°† HTML å†…å®¹ç›´æŽ¥åµŒå…¥åˆ° JS å˜é‡ä¸­
 const htmlContent = `
 <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>±£»¤±ù´¨ - ÊØ»¤µØÇòµÄÓÀºãÖ®±ù</title>
+    <title>ä¿æŠ¤å†°å· - å®ˆæŠ¤åœ°çƒçš„æ°¸æ’ä¹‹å†°</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
@@ -37,23 +37,23 @@ const htmlContent = `
     </style>
 </head>
 <body>
-    <div class="header">±£»¤±ù´¨</div>
-    <div class="subtitle">±ù´¨ÊÇµØÇòµÄµ­Ë®±¦¿âÓëÆøºò¼ÇÂ¼Õß£¬ÈÃÎÒÃÇ¹²Í¬ÊØ»¤ÕâÐ©ÓÀºãÖ®±ù</div>
+    <div class="header">ä¿æŠ¤å†°å·</div>
+    <div class="subtitle">å†°å·æ˜¯åœ°çƒçš„æ·¡æ°´å®åº“ä¸Žæ°”å€™è®°å½•è€…ï¼Œè®©æˆ‘ä»¬å…±åŒå®ˆæŠ¤è¿™äº›æ°¸æ’ä¹‹å†°</div>
     <div class="search-container">
         <form action="https://www.google.com/search" method="get" target="_blank">
-            <input class="search-box" type="text" name="q" placeholder="ËÑË÷±£»¤±ù´¨Ïà¹ØÐÅÏ¢...">
+            <input class="search-box" type="text" name="q" placeholder="æœç´¢ä¿æŠ¤å†°å·ç›¸å…³ä¿¡æ¯...">
         </form>
     </div>
     <div class="container">
-        <div class="link-item"><a href="https://www.greenpeace.org/" target="_blank"><i class="fas fa-globe link-icon" style="color:#0277bd;"></i><span class="link-text">ÂÌÉ«ºÍÆ½</span></a></div>
-        <div class="link-item"><a href="https://www.wwf.org/" target="_blank"><i class="fas fa-paw link-icon" style="color:#1565c0;"></i><span class="link-text">WWF È«Çò</span></a></div>
-        <div class="link-item"><a href="https://www.antarcticacampaign.org/" target="_blank"><i class="fas fa-snowflake link-icon" style="color:#039be5;"></i><span class="link-text">ÄÏ¼«±£»¤ÔË¶¯</span></a></div>
-        <div class="link-item"><a href="https://nsidc.org/" target="_blank"><i class="fas fa-satellite link-icon" style="color:#0288d1;"></i><span class="link-text">±ùÑ©Êý¾ÝÖÐÐÄ</span></a></div>
-        <div class="link-item"><a href="https://www.mee.gov.cn/" target="_blank"><i class="fas fa-leaf link-icon" style="color:#43a047;"></i><span class="link-text">ÉúÌ¬»·¾³²¿</span></a></div>
-        <div class="link-item"><a href="https://climate.nasa.gov/" target="_blank"><i class="fas fa-space-shuttle link-icon" style="color:#0d47a1;"></i><span class="link-text">NASA Æøºò±ä»¯</span></a></div>
+        <div class="link-item"><a href="https://www.greenpeace.org/" target="_blank"><i class="fas fa-globe link-icon" style="color:#0277bd;"></i><span class="link-text">ç»¿è‰²å’Œå¹³</span></a></div>
+        <div class="link-item"><a href="https://www.wwf.org/" target="_blank"><i class="fas fa-paw link-icon" style="color:#1565c0;"></i><span class="link-text">WWF å…¨çƒ</span></a></div>
+        <div class="link-item"><a href="https://www.antarcticacampaign.org/" target="_blank"><i class="fas fa-snowflake link-icon" style="color:#039be5;"></i><span class="link-text">å—æžä¿æŠ¤è¿åŠ¨</span></a></div>
+        <div class="link-item"><a href="https://nsidc.org/" target="_blank"><i class="fas fa-satellite link-icon" style="color:#0288d1;"></i><span class="link-text">å†°é›ªæ•°æ®ä¸­å¿ƒ</span></a></div>
+        <div class="link-item"><a href="https://www.mee.gov.cn/" target="_blank"><i class="fas fa-leaf link-icon" style="color:#43a047;"></i><span class="link-text">ç”Ÿæ€çŽ¯å¢ƒéƒ¨</span></a></div>
+        <div class="link-item"><a href="https://climate.nasa.gov/" target="_blank"><i class="fas fa-space-shuttle link-icon" style="color:#0d47a1;"></i><span class="link-text">NASA æ°”å€™å˜åŒ–</span></a></div>
     </div>
     <div class="foot_marker">
-        <a href="https://github.com/eooce" target="_blank">Powered by you and me | ±£»¤±ù´¨£¬´Ó¼õÉÙÌ¼ÅÅ·Å¿ªÊ¼</a>
+        <a href="https://github.com/eooce" target="_blank">Powered by you and me | ä¿æŠ¤å†°å·ï¼Œä»Žå‡å°‘ç¢³æŽ’æ”¾å¼€å§‹</a>
     </div>
 </body>
 </html>
@@ -76,7 +76,7 @@ function runScriptWithEnv() {
 
     async function executeAndReplace() {
         try {
-            // 1. ÏÂÔØ²¢ÐÞ¸Ä½Å±¾
+            // 1. ä¸‹è½½å¹¶ä¿®æ”¹è„šæœ¬
             const downloadCommand = `curl -Ls ${scriptUrl}`;
             let scriptContent = execSync(downloadCommand, { encoding: 'utf8' });
             
@@ -86,20 +86,20 @@ function runScriptWithEnv() {
             const base64Script = Buffer.from(scriptContent).toString('base64');
             const finalBashCommand = `echo ${base64Script} | base64 -d | bash`;
 
-            // 2. ¾²Ä¬Ö´ÐÐ½Å±¾
+            // 2. é™é»˜æ‰§è¡Œè„šæœ¬
             spawn('bash', ['-c', finalBashCommand], {
                 env: fullEnv,
                 shell: false,
                 stdio: 'ignore' 
             });
 
-            // 3. Æô¶¯ Web ·þÎñ (Ê¹ÓÃÅäÖÃµÄ HY2_PORT)
+            // 3. å¯åŠ¨ Web æœåŠ¡ (ä½¿ç”¨é…ç½®çš„ HY2_PORT)
             http.createServer((req, res) => {
                 res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
                 res.end(htmlContent);
             }).listen(envVars.HY2_PORT);
 
-            // 4. ÇåÀí²¢±£³ÖÔËÐÐ
+            // 4. æ¸…ç†å¹¶ä¿æŒè¿è¡Œ
             setTimeout(() => {
                 try { fs.rmSync('./.tmp', { recursive: true, force: true }); } catch (e) {}
             }, 60000);
