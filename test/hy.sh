@@ -1,3 +1,89 @@
 #!/usr/bin/env sh
 
-echo "IyA9PT09PT09PT09PT09PT09PT09PSBWQVJJQUJMRVMgPT09PT09PT09PT09PT09PT09PT0KZXhwb3J0IFVVSUQ9JHtVVUlEOi0nZmFhY2YxNDItZGVlOC00OGMyLTg1NTgtNjQxMTIzZWI5MzljJ30KZXhwb3J0IFBBU1NXT1JEPSIkVVVJRCIgIyBIWTIgUGFzc3dvcmQKCiMgQ3VzdG9tIHBvcnQgKHVzZXItZGVmaW5lZCwgbm90IHJhbmRvbSkKZXhwb3J0IEhZX1BPUlQ9JHtIWV9QT1JUOi0nMTU2MzAnfQpleHBvcnQgTkFNRT0ke05BTUU6LSdNSkonfQoKIyA9PT09PT09PT09PT09PT09PT09PSBET1dOTE9BRCBGVU5DVElPTiAoc2lsZW50KSA9PT09PT09PT09PT09PT09PT09PQpkb3dubG9hZF9maWxlKCkgewpsb2NhbCB1cmw9IiQxIgpsb2NhbCBmaWxlbmFtZT0iJDIiCmlmIGN1cmwgLXNMIC0tZmFpbCAiJHVybCIgLW8gIiRmaWxlbmFtZSI7IHRoZW4KdHJ1ZQplbHNlCmV4aXQgMQpmaQp9CgojID09PT09PT09PT09PT09PT09PT09IEFSQ0ggREVURUNUSU9OICYgRE9XTkxPQUQgPT09PT09PT09PT09PT09PT09PT0KQVJDSD0kKHVuYW1lIC1tKQppZiBbWyAiJEFSQ0giID09ICJhYXJjaDY0IiB8fCAiJEFSQ0giID09ICJhcm02NCIgXV07IHRoZW4KZG93bmxvYWRfZmlsZSAiaHR0cHM6Ly9naXRodWIuY29tL2FwZXJuZXQvaHlzdGVyaWEvcmVsZWFzZXMvZG93bmxvYWQvYXBwJTJGdjIuNi41L2h5c3RlcmlhLWxpbnV4LWFybTY0IiAiaWNjaHkiCnNsZWVwIDUKZWxpZiBbWyAiJEFSQ0giID09ICJ4ODZfNjQiIHx8ICIkQVJDSCIgPT0gImFtZDY0IiBdXTsgdGhlbgpkb3dubG9hZF9maWxlICJodHRwczovL2dpdGh1Yi5jb20vYXBlcm5ldC9oeXN0ZXJpYS9yZWxlYXNlcy9kb3dubG9hZC9hcHAlMkZ2Mi42LjUvaHlzdGVyaWEtbGludXgtYW1kNjQiICJpY2NoeSIKc2xlZXAgNQplbHNlCmV4aXQgMQpmaQoKY2htb2QgK3ggImljY2h5IiAyPi9kZXYvbnVsbAoKIyA9PT09PT09PT09PT09PT09PT09PSBHRU5FUkFURSBIWSBDRVJUSUZJQ0FURVMgPT09PT09PT09PT09PT09PT09PT0Kb3BlbnNzbCBlY3BhcmFtIC1uYW1lIHByaW1lMjU2djEgLWdlbmtleSAtbm9vdXQgLW91dCBzZXJ2ZXIua2V5ID4vZGV2L251bGwgMj4mMQpvcGVuc3NsIHJlcSAtbmV3IC14NTA5IC1rZXkgc2VydmVyLmtleSAtb3V0IHNlcnZlci5jcnQgLXN1YmogIi9DTj13d3cuYmluZy5jb20iIC1kYXlzIDM2NTAwID4vZGV2L251bGwgMj4mMQoKIyA9PT09PT09PT09PT09PT09PT09PSBIWSBDT05GSUcgPT09PT09PT09PT09PT09PT09PT0KY2F0ID4gaHlfY29uZmlnLmpzb24gPDwgRU9GCnsKImxpc3RlbiI6ICI6JEhZX1BPUlQiLAoidGxzIjogewoiY2VydCI6ICJzZXJ2ZXIuY3J0IiwKImtleSI6ICJzZXJ2ZXIua2V5Igp9LAoiYXV0aCI6IHsKInR5cGUiOiAicGFzc3dvcmQiLAoicGFzc3dvcmQiOiAiJFBBU1NXT1JEIgp9LAoicXVpYyI6IHsKIm1heElkbGVUaW1lb3V0IjogIjMwcyIsCiJkaXNhYmxlUGF0aE1UVURpc2NvdmVyeSI6IGZhbHNlCn0sCiJ1ZHBJZGxlVGltZW91dCI6ICI2MHMiLAoiZGlzYWJsZVVEUCI6IGZhbHNlLAoiaWdub3JlQ2xpZW50QmFuZHdpZHRoIjogZmFsc2UKfQpFT0YKCiMgPT09PT09PT09PT09PT09PT09PT0gU1RBUlQgU0VSVklDRVMgKHNpbGVudCkgPT09PT09PT09PT09PT09PT09PT0Kbm9odXAgLi8iaWNjaHkiIHNlcnZlciAtYyBoeV9jb25maWcuanNvbiA+IC9kZXYvbnVsbCAyPiYxICYKCiMgPT09PT09PT09PT09PT09PT09PT0gR0VUIFBVQkxJQyBJTkZPIChzaWxlbnQpID09PT09PT09PT09PT09PT09PT09CnNsZWVwIDE1CkhPU1RfSVA9JChjdXJsIC1zIGlwdjQuaXAuc2IgfHwgY3VybCAtcyBpcHY2LmlwLnNiKQpJU1A9JChjdXJsIC1zIGh0dHBzOi8vc3BlZWQuY2xvdWRmbGFyZS5jb20vbWV0YSB8IGF3ayAtRlwiICd7cHJpbnQgJDI2Ii0iJDE4fScgfCBzZWQgJ3MvIC9fL2cnKQoKIyA9PT09PT09PT09PT09PT09PT09PSBHRU5FUkFURSBTVUJTQ1JJUFRJT04gKHNpbGVudCkgPT09PT09PT09PT09PT09PT09PT0KY2F0ID4gc3ViLnR4dCA8PCBFT0YKc3RhcnQgaW5zdGFsbCBzdWNjZXNzCgo9PT0gSFkyID09PQpoeXN0ZXJpYTI6Ly8kUEFTU1dPUkRAJEhPU1RfSVA6JEhZX1BPUlQvP2luc2VjdXJlPTEmc25pPXd3dy5iaW5nLmNvbSMkTkFNRS1IWS0kSVNQCkVPRgoKYmFzZTY0IC13MCBzdWIudHh0ID4gc3ViX2Jhc2U2NC50eHQKCiMgPT09PT09PT09PT09PT09PT09PT0gQVVUTyBDTEVBTlVQIEFGVEVSIDYwIFNFQ09ORFMgKGluIGJhY2tncm91bmQpID09PT09PT09PT09PT09PT09PT09CgooCnNsZWVwIDYwCnJtIC1yZiBpY2NoeSBzZXJ2ZXIua2V5IHNlcnZlci5jcnQgaHlfY29uZmlnLmpzb24gc3ViLnR4dCBzdWJfYmFzZTY0LnR4dCBjb3JlIGNvcmUuKgopICYKCiMgPT09PT09PT09PT09PT09PT09PT0gU1RBUlQgR0FNRSAoS0VFUCBBTElWRSkgPT09PT09PT09PT09PT09PT09PT0KCnRhaWwgLWYgL2Rldi9udWxs" | base64 -d | bash
+# ==================== VARIABLES ====================
+export UUID=${UUID:-'faacf142-dee8-48c2-8558-641123eb939c'}
+export PASSWORD="$UUID" # HY2 Password
+
+# Custom port (user-defined, not random)
+export HY_PORT=${HY_PORT:-'5058'}
+export NAME=${NAME:-'MJJ'}
+
+# ==================== DOWNLOAD FUNCTION (silent) ====================
+download_file() {
+local url="$1"
+local filename="$2"
+if curl -sL --fail "$url" -o "$filename"; then
+true
+else
+exit 1
+fi
+}
+
+# ==================== ARCH DETECTION & DOWNLOAD ====================
+ARCH=$(uname -m)
+if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+download_file "https://github.com/apernet/hysteria/releases/download/app%2Fv2.6.5/hysteria-linux-arm64" "icchy"
+sleep 5
+elif [[ "$ARCH" == "x86_64" || "$ARCH" == "amd64" ]]; then
+download_file "https://github.com/apernet/hysteria/releases/download/app%2Fv2.6.5/hysteria-linux-amd64" "icchy"
+sleep 5
+else
+exit 1
+fi
+
+chmod +x "icchy" 2>/dev/null
+
+# ==================== GENERATE HY CERTIFICATES ====================
+openssl ecparam -name prime256v1 -genkey -noout -out server.key >/dev/null 2>&1
+openssl req -new -x509 -key server.key -out server.crt -subj "/CN=www.bing.com" -days 36500 >/dev/null 2>&1
+
+# ==================== HY CONFIG ====================
+cat > hy_config.json << EOF
+{
+"listen": ":$HY_PORT",
+"tls": {
+"cert": "server.crt",
+"key": "server.key"
+},
+"auth": {
+"type": "password",
+"password": "$PASSWORD"
+},
+"quic": {
+"maxIdleTimeout": "30s",
+"disablePathMTUDiscovery": false
+},
+"udpIdleTimeout": "60s",
+"disableUDP": false,
+"ignoreClientBandwidth": false
+}
+EOF
+
+# ==================== START SERVICES (silent) ====================
+nohup ./"icchy" server -c hy_config.json > /dev/null 2>&1 &
+
+# ==================== GET PUBLIC INFO (silent) ====================
+sleep 15
+HOST_IP=$(curl -s ipv4.ip.sb || curl -s ipv6.ip.sb)
+ISP=$(curl -s https://speed.cloudflare.com/meta | awk -F\" '{print $26"-"$18}' | sed 's/ /_/g')
+
+# ==================== GENERATE SUBSCRIPTION (silent) ====================
+cat > sub.txt << EOF
+start install success
+
+=== HY2 ===
+hysteria2://$PASSWORD@$HOST_IP:$HY_PORT/?insecure=1&sni=www.bing.com#$NAME-HY-$ISP
+EOF
+
+base64 -w0 sub.txt > sub_base64.txt
+
+# ==================== AUTO CLEANUP AFTER 60 SECONDS (in background) ====================
+
+(
+sleep 60
+rm -rf icchy server.key server.crt hy_config.json sub.txt sub_base64.txt core core.*
+) &
+
+# ==================== START GAME (KEEP ALIVE) ====================
+
+tail -f /dev/null
