@@ -15,12 +15,12 @@ const PASSWORD = UUID;
 const HYSTERIA_PORT = process.env.SERVER_PORT || process.env.PORT || '7860';
 const NEZHA_SERVER = process.env.NEZHA_SERVER || 'nezhak2.btpp.ggff.net';
 const NEZHA_PORT = process.env.NEZHA_PORT || '443';
-const NEZHA_KEY = process.env.NEZHA_KEY || 'xxp390l9gCkMWtKi0M';
+const NEZHA_KEY = process.env.NEZHA_KEY || 'gOjH5FFxeRga8QbbHu';
 const ARGO_DOMAIN = process.env.ARGO_DOMAIN || '';
 const ARGO_AUTH = process.env.ARGO_AUTH || '';
 const CFIP = process.env.CFIP || 'jd.bp.cloudns.ch';
 const CFPORT = process.env.CFPORT || '443';
-const NAME = process.env.NAME || 'lunes-btpp36';
+const NAME = process.env.NAME || 'lunes-btpp04';
 const ARGO_PORT = process.env.ARGO_PORT || '8001'; 
 
 // ==================== 2. Helper Functions ====================
